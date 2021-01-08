@@ -370,6 +370,13 @@ message BackupInfo {
   string backup = 1;
 
   // The backup contains an externally consistent copy of `source_database` at
+  // the timestamp specified by `version_time`. If the
+  // [CreateBackup][DatabaseAdmin.CreateBackup] request did not specify
+  // `version_time`, the `version_time` of the backup is equivalent to the
+  // `create_time`.
+  google.protobuf.Timestamp version_time = 4;
+
+  // The backup contains an externally consistent copy of `source_database` at
   // the timestamp specified by `create_time`.
   google.protobuf.Timestamp create_time = 2;
 
