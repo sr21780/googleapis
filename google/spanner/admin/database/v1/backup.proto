@@ -60,6 +60,12 @@ message Backup {
                          type: "spanner.googleapis.com/Database"
                        }];
 
+  // The backup will contain an externally consistent copy of the database at
+  // the timestamp specified by `version_time`. If `version_time` is not
+  // specified, the system will set `version_time` to the `create_time` of the
+  // backup.
+  google.protobuf.Timestamp version_time = 9;
+
   // Required for the [CreateBackup][google.spanner.admin.database.v1.DatabaseAdmin.CreateBackup]
   // operation. The expiration time of the backup, with microseconds
   // granularity that must be at least 6 hours and at most 366 days
